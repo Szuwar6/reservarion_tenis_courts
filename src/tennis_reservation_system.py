@@ -12,7 +12,8 @@ class TennisReservationSystem:
         while True:
             action = input(
                 "What do you want to do:\n1. Make a reservation\n2. Cancel a reservation\n"
-                "3. Print schedule\n4. Save schedule to a file\n5. Exit\n")
+                "3. Print schedule\n4. Save schedule to a file\n5. Exit\n"
+            )
 
             if action == "1":
                 self.make_reservation()
@@ -40,21 +41,28 @@ class TennisReservationSystem:
                     print("The entered date has already passed.")
                     continue
                 if start < datetime.datetime.now() + datetime.timedelta(minutes=60):
-                    print("Less than an hour to the start of the game, please choose another time.")
+                    print(
+                        "Less than an hour to the start of the game, please choose another time."
+                    )
                     continue
                 count = self.schedule.count_sum_reservation(name, start)
                 if count > 1:
-                    print("You have reached the maximum number of reservations (2) for this week.")
+                    print(
+                        "You have reached the maximum number of reservations (2) for this week."
+                    )
 
                 start_date = self.schedule.check_if_court_is_reserved_start_date(start)
                 if start_date.hour >= 22 or start_date.hour < 8:
-                    print("Courts are open from 8 to 22, or there are no free dates available.")
+                    print(
+                        "Courts are open from 8 to 22, or there are no free dates available."
+                    )
                     continue
                 if start != start_date:
                     while True:
                         answer = input(
-                            f'The time you chose is unavailable, would you like to make a reservation'
-                            f' for {start_date.strftime("%d.%m.%Y %H:%M")} instead? (Y/N)\n')
+                            f"The time you chose is unavailable, would you like to make a reservation"
+                            f' for {start_date.strftime("%d.%m.%Y %H:%M")} instead? (Y/N): '
+                        )
                         if answer == "Y":
                             break
                         elif answer == "N":
@@ -69,10 +77,15 @@ class TennisReservationSystem:
 
         if start_date.hour == 21 and start_date.minute == 30:
             while True:
-                duration = input("How long would you like to book court?\n1) 30 Minutes\n")
+                duration = input(
+                    "How long would you like to book court?\n1) 30 Minutes\n"
+                )
                 if duration == "1":
                     end_date = start_date + datetime.timedelta(minutes=30)
-                    if self.schedule.check_if_court_is_reserved_end_date(end_date) == False:
+                    if (
+                        self.schedule.check_if_court_is_reserved_end_date(end_date)
+                        == False
+                    ):
                         print("No free date\n")
                         continue
                     break
@@ -80,16 +93,24 @@ class TennisReservationSystem:
                     print("Wrong choise. Please try again.\n")
         elif start_date.hour >= 17 and start_date.hour <= 21:
             while True:
-                duration = input("How long would you like to book court?\n1) 30 Minutes\n2) 60 Minutes\n")
+                duration = input(
+                    "How long would you like to book court?\n1) 30 Minutes\n2) 60 Minutes\n"
+                )
                 if duration == "1":
                     end_date = start_date + datetime.timedelta(minutes=30)
-                    if self.schedule.check_if_court_is_reserved_end_date(end_date) == False:
+                    if (
+                        self.schedule.check_if_court_is_reserved_end_date(end_date)
+                        == False
+                    ):
                         print("No free date\n")
                         continue
                     break
                 elif duration == "2":
                     end_date = start_date + datetime.timedelta(minutes=60)
-                    if self.schedule.check_if_court_is_reserved_end_date(end_date) == False:
+                    if (
+                        self.schedule.check_if_court_is_reserved_end_date(end_date)
+                        == False
+                    ):
                         print("No free date\n")
                         continue
                     break
@@ -99,22 +120,32 @@ class TennisReservationSystem:
         else:
             while True:
                 duration = input(
-                    "How long would you like to book court?\n1) 30 Minutes\n2) 60 Minutes\n3) 90 Minutes\n")
+                    "How long would you like to book court?\n1) 30 Minutes\n2) 60 Minutes\n3) 90 Minutes\n"
+                )
                 if duration == "1":
                     end_date = start_date + datetime.timedelta(minutes=30)
-                    if self.schedule.check_if_court_is_reserved_end_date(end_date) == False:
+                    if (
+                        self.schedule.check_if_court_is_reserved_end_date(end_date)
+                        == False
+                    ):
                         print("No free date\n")
                         continue
                     break
                 elif duration == "2":
                     end_date = start_date + datetime.timedelta(minutes=60)
-                    if self.schedule.check_if_court_is_reserved_end_date(end_date) == False:
+                    if (
+                        self.schedule.check_if_court_is_reserved_end_date(end_date)
+                        == False
+                    ):
                         print("No free date\n")
                         continue
                     break
                 elif duration == "3":
                     end_date = start_date + datetime.timedelta(minutes=90)
-                    if self.schedule.check_if_court_is_reserved_end_date(end_date) == False:
+                    if (
+                        self.schedule.check_if_court_is_reserved_end_date(end_date)
+                        == False
+                    ):
                         print("No free date\n")
                         continue
                     break
@@ -135,8 +166,3 @@ class TennisReservationSystem:
 
     def main(self):
         self.run()
-
-
-# if __name__ == "__main__":
-#     system = TennisReservationSystem()
-#     system.main()
