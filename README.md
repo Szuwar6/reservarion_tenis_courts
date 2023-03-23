@@ -19,7 +19,7 @@ This is a simple REPL program that allows user to make a reservation for a tenni
 
 ## Setup
 1. Clone the repository:
-```git clone https://github.com/Szuwar6/reservarion_tenis_courts.git```
+```git clone https://github.com/Szuwar6/reservation_tennis_courts```
 2. Install the requirements:
 ```pip install -r requirements.txt```
 3. To start the program, run the run.py file in your terminal.
