@@ -1,4 +1,4 @@
-# reservarion_tenis_courts by Marek Szubartowicz
+# reservation_tenis_courts by Marek Szubartowicz
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
