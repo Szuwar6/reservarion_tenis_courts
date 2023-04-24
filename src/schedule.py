@@ -3,6 +3,11 @@ import json
 import datetime
 
 
+class FileTypes:
+    CSV_FORMAT = "csv"
+    JSON_FORMAT = "json"
+
+
 class Schedule:
     def __init__(self):
         self.list_of_reservations = []
@@ -162,10 +167,10 @@ class Schedule:
         start_date = datetime.datetime.strptime(start, "%d.%m.%Y")
         end_date = datetime.datetime.strptime(end, "%d.%m.%Y")
 
-        if file_format == "csv":
+        if file_format == FileTypes.CSV_FORMAT:
             return self.save_to_file_csv(filename, start_date, end_date)
 
-        elif file_format == "json":
+        elif file_format == FileTypes.JSON_FORMAT:
             return self.save_to_file_json(filename, start_date, end_date)
         else:
             print("Invalid file format. Please enter 'csv' or 'json'.")

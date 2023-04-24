@@ -9,24 +9,24 @@ class TennisReservationSystem:
         self.schedule = Schedule()
 
     def run(self):
+        executable_option = {
+            "1": self.make_reservation,
+            "2": self.cancel_reservation,
+            "3": self.print_schedule,
+            "4": self.save_schedule,
+            "5": exit,
+        }
+
         while True:
             action = input(
                 "What do you want to do:\n1. Make a reservation\n2. Cancel a reservation\n"
                 "3. Print schedule\n4. Save schedule to a file\n5. Exit\n"
             )
 
-            if action == "1":
-                self.make_reservation()
-            elif action == "2":
-                self.cancel_reservation()
-            elif action == "3":
-                self.print_schedule()
-            elif action == "4":
-                self.save_schedule()
-            elif action == "5":
-                break
+            if action in executable_option:
+                executable_option[action]()
             else:
-                print("Invalid action. Please try again.\n")
+                print("Invalid action. Please try again.")
 
     def make_reservation(self):
         name = input("Enter your name: ")
